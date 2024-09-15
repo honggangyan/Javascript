@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Exchange</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const endpoint = 'latest';
+            const access_key = '01be948a25dc8b967facd75354f34cf2';
+            const baseURL = 'https://api.exchangeratesapi.io/v1/';
+
+            // Construct the API URL
+            const url = `${baseURL}${endpoint}?access_key=${access_key}`;
+            document.querySelector('form').onsubmit = function () {
+                const currency = document.querySelector('#currency').value.toUpperCase();
+
+                // Fetch the exchange rates data
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        const rate = data.rates[currency];
+                        if (rate !== undefined) {
+                            document.querySelector('h1').innerHTML = `1 EUR = ${rate.toFixed(3)} ${currency}`;
+                        }
+                        else {
+                            document.querySelector('h1').innerHTML = "Invalid Currency";
+                        }
+                    })
+                    .catch(error => {
+                        console.log("Error:", error);
+                    }) // catch any error and log in the console
+                return false
+            }
+        });
+
+    </script>
+</head>
+
+<body>
+    <h1>Currency Exchange Rates</h1>
+    <form>
+        <input id="currency" type="text" placeholder="Currency">
+        <input type="submit" type="convert">
+    </form>
+</body>
+
+</html>

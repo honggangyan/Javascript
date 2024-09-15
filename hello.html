@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello</title>
+    <script>
+        // function Hello() {
+        //     const heading = document.querySelector('h1');
+        //     if (heading.innerHTML === "Hello!") {
+        //         heading.innerHTML = "Goodbye!";
+        //     } else {
+        //         heading.innerHTML = "Hello!";
+        //     }
+        // };
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     document.querySelector('form').onsubmit = function () {
+        //         const name = document.querySelector('#name').value;
+        //         alert(`Hello, ${name}!`);
+        //     }
+        // })
+        document.addEventListener("DOMContentLoaded", () => {
+            // click Buttons and the color changes
+            document.querySelectorAll("button").forEach(button => {
+                button.onclick = function () {
+                    document.querySelector("#Hello").style.color = button.dataset.color
+                }
+                //click on list of options, the color changes
+            document.querySelector("select").onchange = function () {
+                document.querySelector("#Hello").style.color = this.value;
+                }
+            })
+        }
+        )
+        // button => equals to function(button)
+    </script>
+</head>
+
+<body>
+    <h1 id="Hello">Hello!</h1>
+    <!-- <form>
+        <input autofocus type="text" id="name" placeholder="name">
+        <input type="submit">
+    </form> -->
+    <button data-color="red">red</button>
+    <button data-color="blue">blue</button>
+    <button data-color="yellow">yellow</button>
+    <select name="color">
+        <option value="green">green</option>
+        <option value="purple">purple</option>
+        <option value="blue">blue</option>
+        <option value="brown">brown</option>
+    </select>
+
+</body>
+
+</html>

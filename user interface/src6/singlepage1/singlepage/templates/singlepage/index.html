@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Single Page</title>
+        <style>
+        </style>
+        <script>
+            function showSection(section) {
+                fetch(`/sections/${section}`)
+                .then(response => response.text()) // response and text are placeholders, and they can be any variables
+                .then(text => {
+                    console.log(text);
+                    document.querySelector("#content").innerHTML = text;
+                });
+            }
+
+            document.addEventListener("DOMContentLoaded", function() {
+                document.querySelectorAll('button').forEach(button =>{
+                    button.onclick = function() {
+                        const section = this.dataset.section;
+                        showSection(section);
+                    }
+                })
+            }
+        )
+        </script>
+    </head>
+    <body>
+        <h1>Hello!</h1>
+        <button data-section="1">section1</button>
+        <button data-section="2">section2</button>
+        <button data-section="3">section3</button>
+        <div id="content">
+        </div>
+    </body>
+</html>
