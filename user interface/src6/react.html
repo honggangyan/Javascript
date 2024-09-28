@@ -1,26 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-        <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
-        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-        <title>Hello</title>
-    </head>
-    <body>
-        <div id="app"></div>
 
-        <script type="text/babel">
-            function App() {
-                return (
-                    <div>
-                        Hello!
-                    </div>
-                );
-            }
+<head>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+    <!-- include react package to add react components -->
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+    <!-- include react-dom to insert react components to html -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- include babel to transfer JSX into JavaScript -->
+    <title>React</title>
+</head>
 
-            ReactDOM.render(<App />, document.querySelector("#app"));
-        </script>
-    </body>
+<body>
+    <!-- I want to develop an app to show text on the html -->
+    <!-- 1. create a div for the content, give the div an id for later use-->
+    <div id="app"></div>
+    <div id="greetings"></div>
+    <!-- 2. create the react jsx script for to create and render the app, define the type of the jsx as text/babel -->
+    <script type="text/babel">
+        // define the function, make sure start the name with an uppercase, here an html element can be included in the function
+        function Hello() {
+            return (
+                <h1>Hello!</h1>
+            )
+        }
+        // use ReactDOM to render the function into the div we created.
+        // define another function to pratice the properties of functions
+        // the function can take props as variables to deliver different input
+        function Greetings(props) {
+            return (
+                <h1>Hello, {props.name}</h1>
+            )
+        }
+        // define the App to take in different variables and render this app to the html
+        function App() {
+            return (
+                <div>
+                    <Greetings name="Honggang" />
+                    <Greetings name="Louis" />
+                    <Greetings name="Jack" />
+                </div>
+            )
+        }
+
+        ReactDOM.render(<Hello />, document.querySelector("#app"));
+        ReactDOM.render(<App />, document.querySelector("#greetings"));
+
+    </script>
+</body>
+
 </html>
-
-<!-- react app -->
