@@ -8,26 +8,22 @@
     </head>
     <body>
         <div id="app"></div>
-
         <script type="text/babel">
-
             function App() {
-
-                const [count, setCount] = React.useState(0);
+                const [count,setCount] = React.useState(0);
 
                 function updateCount() {
-                    setCount(count + 1);
+                    setCount(count+1);
                 }
 
                 return (
                     <div>
-                        <h1>{count}</h1>
+                        <div>{count}</div>
                         <button onClick={updateCount}>Count</button>
                     </div>
-                );
+                )
             }
-
-            ReactDOM.render(<App />, document.querySelector("#app"));
+        ReactDOM.render(<App />, document.querySelector("#app"));
         </script>
     </body>
 </html>
